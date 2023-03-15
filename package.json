@@ -1,0 +1,20 @@
+{
+  "name": "alchemy-academy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solo12zw74/alchemy-academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solo12zw74/alchemy-academy/issues"
+  },
+  "homepage": "https://github.com/solo12zw74/alchemy-academy#readme"
+}
