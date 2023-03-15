@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/solo12zw74/alchemy-academy/issues"
   },
-  "homepage": "https://github.com/solo12zw74/alchemy-academy#readme"
+  "homepage": "https://github.com/solo12zw74/alchemy-academy#readme",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "ethereum-cryptography": "^1.2.0"
+  }
 }
