@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/solo12zw74/alchemy-academy#readme",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "ethereum-cryptography": "^1.2.0"
   },
   "devDependencies": {
