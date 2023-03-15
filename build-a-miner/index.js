@@ -10,15 +10,18 @@ function addTransaction(transaction) {
 }
 
 function mine() {
-    const blockHeight = blocks.length 
-    blocks.push({id: blockHeight})
+    const blockHeight = blocks.length
+    const blockBody = { id: blockHeight }
+    const blockStringified = JSON.stringify(blockBody)
+    const blockHash = SHA256(blockStringified)
+    blocks.push({ ...blockBody, hash: blockHash })
 }
 
 module.exports = {
     TARGET_DIFFICULTY,
     MAX_TRANSACTIONS,
-    addTransaction, 
-    mine, 
+    addTransaction,
+    mine,
     blocks,
     mempool
 };
