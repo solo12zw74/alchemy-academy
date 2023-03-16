@@ -11,15 +11,20 @@ function addTransaction(transaction) {
 
 function mine() {
     const blockHeight = blocks.length
-    const blockBody = { id: blockHeight, transactions: [] }
+    const blockBody = { id: blockHeight, transactions: [], nonce: 0 }
+    
     for (let i = 0; i < MAX_TRANSACTIONS; i++) {
         const transaction = mempool.pop();
         if (!!transaction)
             blockBody.transactions.push(transaction)
     }
 
-    const blockStringified = JSON.stringify(blockBody)
-    const blockHash = SHA256(blockStringified)
+    let blockHash;
+    do {
+        const blockStringified = JSON.stringify(blockBody)
+        blockHash = SHA256(blockStringified)
+        blockBody.nonce++
+    } while (BigInt(`0x${blockHash}`) >= TARGET_DIFFICULTY);
     blocks.push({ ...blockBody, hash: blockHash })
 }
 

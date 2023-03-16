@@ -26,7 +26,7 @@ describe('mine', () => {
             assert.equal(lastBlock.id, 0);
         });
         it('should return the expected hash', () => {
-            const expectedHash = 'ea765717d499f17f07270f3eb2d5ad22954f33fa91fbceaf7f7e9256d1547962'
+            const expectedHash = '0d930c9b14b61414ba299fbcb84a105e039148d3af767ac0cb2b56d59c0e26e6'
             const lastBlock = blocks[blocks.length - 1];
             assert(lastBlock.hash, "did not find a hash property on the block");
             assert.equal(lastBlock.hash.toString(), expectedHash.toString());
@@ -46,7 +46,7 @@ describe('mine', () => {
             assert.equal(lastBlock.id, 1);
         });
         it('should return the expected hash', () => {
-            const expectedHash = '6f23f5a59df29da8aec1e90656195e4b0302ef26a0fd89761e939fbbf1fe4839'
+            const expectedHash = '05d75b8a817ee9cdba81cf4b0b8b756692504b3c3e2dcbc3c244593c255ca372'
             const lastBlock = blocks[blocks.length - 1];
             assert(lastBlock.hash, "did not find a hash property on the block");
             assert.equal(lastBlock.hash.toString(), expectedHash.toString());
