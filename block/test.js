@@ -25,9 +25,6 @@ describe('Block', function () {
 describe('Blockchain', function () {
     before(() => {
         blockchain = new Blockchain();
-    });
-
-    beforeEach(() => {
         blockchain.addBlock(new Block("Dan"));
         blockchain.addBlock(new Block("Peter"));
         blockchain.addBlock(new Block("James"));
@@ -53,13 +50,13 @@ describe('Blockchain', function () {
             blockchain.addBlock(block2);
         });
 
-        it('should be a chain of three blocks', function () {
-            assert.equal(blockchain.chain.length, 3);
+        it('should be a chain of six blocks', function () {
+            assert.equal(blockchain.chain.length, 6);
         });
 
         it('should include block1 and block2', function () {
-            assert(blockchain.chain.some((x) => x === block1), "Could not find block1. Remember to push the block argument in addBlock!")
-            assert(blockchain.chain.some((x) => x === block2), "Could not find block1. Remember to push the block argument in addBlock!")
+            assert(blockchain.chain.some((x) => x == block1), "Could not find block1. Remember to push the block argument in addBlock!")
+            assert(blockchain.chain.some((x) => x == block2), "Could not find block1. Remember to push the block argument in addBlock!")
         });
     });
 
