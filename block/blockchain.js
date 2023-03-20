@@ -6,6 +6,8 @@ class Blockchain {
     }
 
     addBlock = function (block) {
+        var previousBlock = this.chain[this.chain.length - 1]
+        block.previousHash = previousBlock.toHash()
         this.chain.push(block)
     }
 }
