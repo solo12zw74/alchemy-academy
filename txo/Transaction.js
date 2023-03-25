@@ -14,10 +14,14 @@ class Transaction {
 
         const income = this.inputs.reduce(this.#sumReducer, 0);
         const outcome = this.outputs.reduce(this.#sumReducer, 0);
-        console.log(`income: ${income}`)
+      
         if (income < outcome) {
             throw new Error("Insufficient funds")
         }
+      
+        this.inputs.forEach(element => {
+            element.spent = true
+        });
     }
 }
 
