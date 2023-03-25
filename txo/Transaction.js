@@ -22,6 +22,8 @@ class Transaction {
         this.inputs.forEach(element => {
             element.spent = true
         });
+
+        this.fee = income - outcome
     }
 }
 
