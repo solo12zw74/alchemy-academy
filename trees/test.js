@@ -1,4 +1,5 @@
 const Node = require('./node');
+const Tree = require('./tree');
 const { assert } = require('chai');
 
 describe('node', () => {
@@ -15,5 +16,13 @@ describe('node', () => {
 
     it('should have a null right', () => {
         assert.strictEqual(node.right, null);
+    });
+});
+
+describe('tree', () => {
+    const tree = new Tree();
+    
+    it('should have a null root', () => {
+        assert.strictEqual(tree.root, null);
     });
 });
