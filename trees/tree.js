@@ -4,7 +4,18 @@ class Tree {
     }
 
     addNode = function(node){
-        this.root = node
+        if (this.root == null){
+            this.root = node
+        }
+
+        if (node.data < this.root.data) {
+            this.root.left = node
+            return
+        }
+
+        if(node.data > this.root.data) {
+            this.root.right = node
+        }
     }
 }
 
