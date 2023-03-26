@@ -11,6 +11,34 @@ class Tree {
 
         addNodeRecursively(this.root, node)
     }
+
+    hasNode(data) {
+        if (!!!this.root) {
+            throw new Error("Tree is empty")
+        }
+
+        return this.searchRecursively(this.root, data)
+    }
+
+    searchRecursively(parentNode, data){
+        if (parentNode.data == data) {
+            return true
+        }
+
+        if (data < parentNode.data){
+            if (!!!parentNode.left){
+                return false
+            } else {
+                return this.searchRecursively(parentNode.left, data)
+            }
+        }
+
+        if (!!!parentNode.right){
+            return false
+        } else {
+            return this.searchRecursively(parentNode.right, data)
+        }
+    }
 }
 
 function addNodeRecursively(parentNode, childNode) {
