@@ -13,6 +13,10 @@ class MerkleTree {
 
     getRootRecursively(arr) {
 
+        if (arr.length == 1) {
+            return arr[0]
+        }
+
         if (arr.length == 2) {
             return this.concat(arr[0], arr[1])
         }
@@ -21,8 +25,16 @@ class MerkleTree {
     }
 
     split(arr) {
-        const length = arr.length
-        return { left: arr.splice(0, length / 2), right: arr }
+        let middle;
+        const isOdd = arr.length % 2
+
+        if (isOdd) {
+            middle = Math.pow(2, Math.floor(Math.log2(arr.length)))
+        } else {
+            middle = arr.length / 2
+        }
+
+        return { left: arr.splice(0, middle), right: arr }
     }
 }
 
