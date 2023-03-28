@@ -45,4 +45,18 @@ class MerkleTree {
     }
 }
 
-module.exports = MerkleTree;
+function verify(proof, node, root, concat) {
+    let proofHash = null;
+
+    proof.forEach(element => {
+        if (element.left) {
+            proofHash = concat(element.data, proofHash ?? node)
+        } else {
+            proofHash = concat(proofHash ?? node, element.data)
+        }
+    });
+
+    return proofHash == root
+}
+
+module.exports = { MerkleTree, verify };
