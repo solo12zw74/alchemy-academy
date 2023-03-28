@@ -1,40 +1,47 @@
 class MerkleTree {
     constructor(leaves, concat) {
-        this.leaves = leaves
-        this.concat = concat
+        this.leaves = leaves;
+        this.concat = concat;
     }
-    getRoot() {
-        if (this.leaves.length == 1) {
-            return this.leaves[0]
+    getRoot(leaves = this.leaves) {
+        if (leaves.length === 1) {
+            return leaves[0];
         }
-
-        return this.getRootRecursively(this.leaves)
+        const layer = [];
+        for (let i = 0; i < leaves.length; i += 2) {
+            const left = leaves[i];
+            const right = leaves[i + 1];
+            if (right) {
+                layer.push(this.concat(left, right));
+            }
+            else {
+                layer.push(left);
+            }
+        }
+        return this.getRoot(layer);
     }
+    getProof(index, layer = this.leaves, proof = []) {
+        if (layer.length === 1) return proof;
+        const newLayer = [];
+        for (let i = 0; i < layer.length; i += 2) {
+            let left = layer[i];
+            let right = layer[i + 1];
+            if (!right) {
+                newLayer.push(left);
+            }
+            else {
+                newLayer.push(this.concat(left, right));
 
-    getRootRecursively(arr) {
-
-        if (arr.length == 1) {
-            return arr[0]
+                if (i === index || i === index - 1) {
+                    let isLeft = !(index % 2);
+                    proof.push({
+                        data: isLeft ? right : left,
+                        left: !isLeft
+                    });
+                }
+            }
         }
-
-        if (arr.length == 2) {
-            return this.concat(arr[0], arr[1])
-        }
-        const { left, right } = this.split(arr)
-        return this.concat(this.getRootRecursively(left), this.getRootRecursively(right))
-    }
-
-    split(arr) {
-        let middle;
-        const isOdd = arr.length % 2
-
-        if (isOdd) {
-            middle = Math.pow(2, Math.floor(Math.log2(arr.length)))
-        } else {
-            middle = arr.length / 2
-        }
-
-        return { left: arr.splice(0, middle), right: arr }
+        return this.getProof(Math.floor(index / 2), newLayer, proof);
     }
 }
 
