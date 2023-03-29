@@ -9,7 +9,9 @@ class Trie {
         let node = this.root;
 
         for (let i = 0; i < word.length; i++) {
-            node.children[word[i]] = new TrieNode(word[i]);
+            if (!!!node.children[word[i]]) {
+                node.children[word[i]] = new TrieNode(word[i]);
+            }
             node = node.children[word[i]];
 
             if (i == word.length - 1) {
