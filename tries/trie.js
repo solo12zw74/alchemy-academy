@@ -19,6 +19,20 @@ class Trie {
             }
         }
     }
+
+    contains = function (word) {
+        let node = this.root;
+        for (let i = 0; i < word.length; i++) {
+            if (!!!node.children[word[i]]) {
+                return false
+            }
+            node = node.children[word[i]];
+
+            if (i == word.length - 1 && node.isWord) {
+                return true
+            }
+        }
+    }
 }
 
 module.exports = Trie;
